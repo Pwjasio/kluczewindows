@@ -88,6 +88,7 @@ slmgr /ato
 </tr>
 </tbody>
 </table>
+
 ## Klucze Windows 10
 <table>
 <thead>
