@@ -1,14 +1,13 @@
-
 ## Komędy na aktywacje windows 10/11:
-# 1
+### 1
 ```
 slmgr /ipk klucz windows 10/11
 ```
-# 2
+### 2
 ```
 slmgr /skms kms8.msguides.com
 ```
-# 3
+### 3
 ```
 slmgr /ato
 ```
