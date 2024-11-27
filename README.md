@@ -1,11 +1,11 @@
-## Klucze Windows 11
+
 Komędy na aktywacje windows 10/11:
 ```
 slmgr /ipk klucz windows 10/11
 slmgr /skms kms8.msguides.com
 slmgr /ato
 ```
-**Klucze Windows 11**
+## Klucze Windows 11
 <table>
 <thead>
 <tr>
@@ -88,7 +88,7 @@ slmgr /ato
 </tr>
 </tbody>
 </table>
-**Klucze Windows 10**
+## Klucze Windows 10
 <table>
 <thead>
 <tr>
