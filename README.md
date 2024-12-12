@@ -152,12 +152,6 @@ slmgr /ato
 <td align="left">Windows 10 Pro Education N</td>
 <td align="left">YVWGF-BXNMC-HTQYQ-CPQ99-66QFC</td>
 </tr>
-</tbody>
-</table>
-
-## Klucze windows server
-<table>
-<tbody>
 <tr>
 <td align="left">Windows 10 Enterprise</td>
 <td align="left">NPPR9-FWDCX-D2C8J-H872K-2YT43</td>
@@ -202,6 +196,12 @@ slmgr /ato
 <td align="left">Windows 10 Enterprise N LTSC 2019</td>
 <td align="left">92NFX-8DJQP-P6BBQ-THF9C-7CG2H</td>
 </tr>
+</tbody>
+</table>
+
+## Klucze windows server
+<table>
+<tbody>
 <tr>
 <td align="left">Windows Server 2016 Datacenter</td>
 <td align="left">CB7KF-BWN84-R7R2Y-793K2-8XDDG</td>
