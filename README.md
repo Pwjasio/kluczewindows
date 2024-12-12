@@ -154,6 +154,7 @@ slmgr /ato
 </tr>
 </tbody>
 </table>
+
 ## Klucze windows server
 <table>
 <tbody>
