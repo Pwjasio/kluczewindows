@@ -152,6 +152,11 @@ slmgr /ato
 <td align="left">Windows 10 Pro Education N</td>
 <td align="left">YVWGF-BXNMC-HTQYQ-CPQ99-66QFC</td>
 </tr>
+</tbody>
+</table>
+## Klucze windows server
+<table>
+<tbody>
 <tr>
 <td align="left">Windows 10 Enterprise</td>
 <td align="left">NPPR9-FWDCX-D2C8J-H872K-2YT43</td>
