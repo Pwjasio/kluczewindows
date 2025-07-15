@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date & Time Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .date-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .date-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .date-card h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .time-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .time-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .subtract-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .subtract-btn:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        .current-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+
+        .current-display strong {
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 10px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .dates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📅 Date & Time Manager</h1>
+            <p>Manage your important dates and add time intervals to them</p>
+        </div>
+
+        <div class="dates-grid">
+            <div class="date-card">
+                <h3>Date 1</h3>
+                <div class="input-group">
+                    <label for="date1">Select Date:</label>
+                    <input type="date" id="date1">
+                </div>
+                <div class="input-group">
+                    <label for="time1">Add Time (hours):</label>
+                    <input type="number" id="time1" value="0" min="0" step="0.5">
+                </div>
+                <div class="time-controls">
+                    <button class="time-btn add-btn" onclick="addTime(1, 1)">+1 Hour</button>
+                    <button class="time-btn add-btn" onclick="addTime(1, 24)">+1 Day</button>
+                    <button class="time-btn subtract-btn" onclick="addTime(1, -1)">-1 Hour</button>
+                </div>
+                <div class="current-display">
+                    <strong>Result:</strong> <span id="result1">Select a date first</span>
+                </div>
+                <button class="reset-btn" onclick="resetDate(1)">Reset</button>
+            </div>
+
+            <div class="date-card">
+                <h3>Date 2</h3>
+                <div class="input-group">
+                    <label for="date2">Select Date:</label>
+                    <input type="date" id="date2">
+                </div>
+                <div class="input-group">
+                    <label for="time2">Add Time (hours):</label>
+                    <input type="number" id="time2" value="0" min="0" step="0.5">
+                </div>
+                <div class="time-controls">
+                    <button class="time-btn add-btn" onclick="addTime(2, 1)">+1 Hour</button>
+                    <button class="time-btn add-btn" onclick="addTime(2, 24)">+1 Day</button>
+                    <button class="time-btn subtract-btn" onclick="addTime(2, -1)">-1 Hour</button>
+                </div>
+                <div class="current-display">
+                    <strong>Result:</strong> <span id="result2">Select a date first</span>
+                </div>
+                <button class="reset-btn" onclick="resetDate(2)">Reset</button>
+            </div>
+
+            <div class="date-card">
+                <h3>Date 3</h3>
+                <div class="input-group">
+                    <label for="date3">Select Date:</label>
+                    <input type="date" id="date3">
+                </div>
+                <div class="input-group">
+                    <label for="time3">Add Time (hours):</label>
+                    <input type="number" id="time3" value="0" min="0" step="0.5">
+                </div>
+                <div class="time-controls">
+                    <button class="time-btn add-btn" onclick="addTime(3, 1)">+1 Hour</button>
+                    <button class="time-btn add-btn" onclick="addTime(3, 24)">+1 Day</button>
+                    <button class="time-btn subtract-btn" onclick="addTime(3, -1)">-1 Hour</button>
+                </div>
+                <div class="current-display">
+                    <strong>Result:</strong> <span id="result3">Select a date first</span>
+                </div>
+                <button class="reset-btn" onclick="resetDate(3)">Reset</button>
+            </div>
+
+            <div class="date-card">
+                <h3>Date 4</h3>
+                <div class="input-group">
+                    <label for="date4">Select Date:</label>
+                    <input type="date" id="date4">
+                </div>
+                <div class="input-group">
+                    <label for="time4">Add Time (hours):</label>
+                    <input type="number" id="time4" value="0" min="0" step="0.5">
+                </div>
+                <div class="time-controls">
+                    <button class="time-btn add-btn" onclick="addTime(4, 1)">+1 Hour</button>
+                    <button class="time-btn add-btn" onclick="addTime(4, 24)">+1 Day</button>
+                    <button class="time-btn subtract-btn" onclick="addTime(4, -1)">-1 Hour</button>
+                </div>
+                <div class="current-display">
+                    <strong>Result:</strong> <span id="result4">Select a date first</span>
+                </div>
+                <button class="reset-btn" onclick="resetDate(4)">Reset</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 Tip: Use the time input field to add custom hours, or use the quick buttons for common intervals</p>
+        </div>
+    </div>
+
+    <script>
+        // Set today's date as default for all date inputs
+        const today = new Date().toISOString().split('T')[0];
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById(`date${i}`).value = today;
+        }
+
+        // Add event listeners to update results when date or time changes
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById(`date${i}`).addEventListener('change', () => updateResult(i));
+            document.getElementById(`time${i}`).addEventListener('input', () => updateResult(i));
+        }
+
+        function updateResult(dateNum) {
+            const dateInput = document.getElementById(`date${dateNum}`);
+            const timeInput = document.getElementById(`time${dateNum}`);
+            const resultSpan = document.getElementById(`result${dateNum}`);
+            
+            if (!dateInput.value) {
+                resultSpan.textContent = 'Select a date first';
+                return;
+            }
+            
+            const baseDate = new Date(dateInput.value);
+            const hoursToAdd = parseFloat(timeInput.value) || 0;
+            
+            // Add the hours to the date
+            const resultDate = new Date(baseDate.getTime() + (hoursToAdd * 60 * 60 * 1000));
+            
+            // Format the result
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            
+            resultSpan.textContent = resultDate.toLocaleDateString('en-US', options);
+        }
+
+        function addTime(dateNum, hours) {
+            const timeInput = document.getElementById(`time${dateNum}`);
+            const currentTime = parseFloat(timeInput.value) || 0;
+            const newTime = Math.max(0, currentTime + hours);
+            timeInput.value = newTime;
+            updateResult(dateNum);
+        }
+
+        function resetDate(dateNum) {
+            document.getElementById(`date${dateNum}`).value = today;
+            document.getElementById(`time${dateNum}`).value = 0;
+            updateResult(dateNum);
+        }
+
+        // Initialize all results
+        for (let i = 1; i <= 4; i++) {
+            updateResult(i);
+        }
+    </script>
+</body>
+</html>
