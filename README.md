@@ -1,8 +1,8 @@
 ## Komędy i klucze na aktywacje windows 10/11:
 ### 1
-```
-slmgr /ipk klucz windows 10/11
-```
+
+slmgr /ipk  [klucz windows 11](https://github.com/Pwjasio/kluczewindows?tab=readme-ov-file#klucze-windows-11) ||||| [klucz windows 10](https://github.com/Pwjasio/kluczewindows?tab=readme-ov-file#klucze-windows-10)
+
 ### 2
 ```
 slmgr /skms kms8.msguides.com
